@@ -11,6 +11,8 @@ angular.module("internationalPhoneNumber", []).directive 'internationalPhoneNumb
   link: (scope, element, attrs, ctrl) ->
 
     read = () ->
+      if angular.isDefined attrs.countryModel
+        scope.$eval(attrs.countryModel + '=' + element.intlTelInput("getSelectedCountryData").dialCode)
       ctrl.$setViewValue element.val()
 
     handleWhatsSupposedToBeAnArray = (value) ->
