@@ -11,6 +11,8 @@
       link: function(scope, element, attrs, ctrl) {
         var handleWhatsSupposedToBeAnArray, options, read;
         read = function() {
+          if (angular.isDefined(attrs.countryModel))
+            scope.$eval(attrs.countryModel + '=' + element.intlTelInput("getSelectedCountryData").dialCode);
           return ctrl.$setViewValue(element.val());
         };
         handleWhatsSupposedToBeAnArray = function(value) {
